@@ -12,10 +12,10 @@ use Illuminate\Database\Schema\Blueprint;
 
 class ProjectController extends Controller
 {
-    public function main()
+    public function main(CovidData $covid)
     {
         $number = 0;
-        $datas = DB::table('covid_data')->where([
+        $datas = $covid->sortable(['total_case' => 'desc'])->where([
             ['continent', '!=', 'All'],
             ['population', '!=', null],
         ])->get();
