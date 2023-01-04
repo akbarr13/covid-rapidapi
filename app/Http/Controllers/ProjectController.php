@@ -30,7 +30,7 @@ class ProjectController extends Controller
         $url = 'https://covid-193.p.rapidapi.com/statistics';
 
         $headers = [
-            'X-RapidAPI-Key' => 'e0e31fa95bmsh412dc9bbad1b40fp19b7edjsn4c577dfd66cb',
+            'X-RapidAPI-Key' => 'YOUR API KEY',
             'X-RapidAPI-Host' => 'covid-193.p.rapidapi.com'
         ];
 
