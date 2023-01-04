@@ -14,13 +14,22 @@ class ProjectController extends Controller
 {
     public function main(CovidData $covid)
     {
-        $number = 0;
-        $datas = $covid->sortable(['total_case' => 'desc'])->where([
-            ['continent', '!=', 'All'],
-            ['population', '!=', null],
-        ])->get();
+        // $request = new Request;
+        if (request('continent')) {
+            $datas = $covid->sortable(['total_case' => 'desc'])->where([
+                ['continent', '=', request('continent')],
+                ['population', '!=', null],
+            ])->get();
+        } else {
+            $datas = $covid->sortable(['total_case' => 'desc'])->where([
+                ['continent', '!=', 'All'],
+                ['population', '!=', null],
+            ])->get();
+        }
 
-        return view('welcome', compact('datas', 'number'));
+
+
+        return view('welcome', compact('datas'));
     }
 
     public function refresh()
@@ -30,7 +39,7 @@ class ProjectController extends Controller
         $url = 'https://covid-193.p.rapidapi.com/statistics';
 
         $headers = [
-            'X-RapidAPI-Key' => 'YOUR API KEY',
+            'X-RapidAPI-Key' => 'e0e31fa95bmsh412dc9bbad1b40fp19b7edjsn4c577dfd66cb',
             'X-RapidAPI-Host' => 'covid-193.p.rapidapi.com'
         ];
 
