@@ -7,7 +7,7 @@
             <button type="submit"
                 class="flex align-items-start py-2.5 px-5 mt-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Refresh</button>
         </form>
-        @if (request()->has('continent') or request('sort') or request('direction'))
+        @if (!empty($_GET))
             <a class="flex ml-48" href="/">Reset filter</a>
         @endif
         <table class="w-4/5 text-sm text-left text-gray-500 dark:text-gray-400 mx-auto rounded-lg mt-5">

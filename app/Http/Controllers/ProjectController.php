@@ -29,7 +29,7 @@ class ProjectController extends Controller
 
 
 
-        return view('welcome', compact('datas'));
+        return view('main', compact('datas'));
     }
 
     public function refresh()
