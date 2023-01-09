@@ -17,8 +17,6 @@ class ProjectController extends Controller
     {
         // $request = new Request;
 
-
-
         if (request('continent')) {
             $datas = $covid->sortable(['total_case' => 'desc'])->where([
                 ['continent', '=', request('continent')],
@@ -65,23 +63,18 @@ class ProjectController extends Controller
         }
         if (!empty(request('search'))) {
             return Response($output);
-        } else {
-            // $datas = $covid->sortable(['total_case' => 'desc'])->where([
-            //     ['continent', '!=', 'All'],
-            //     ['population', '!=', null],
-            // ])->get();
-
         }
     }
 
     public function refresh()
     {
         $client = new  Client();
+        $apiKey = getenv('RAPID_API_KEY');
 
         $url = 'https://covid-193.p.rapidapi.com/statistics';
 
         $headers = [
-            'X-RapidAPI-Key' => 'YOUR API KEY',
+            'X-RapidAPI-Key' => $apiKey,
             'X-RapidAPI-Host' => 'covid-193.p.rapidapi.com'
         ];
 

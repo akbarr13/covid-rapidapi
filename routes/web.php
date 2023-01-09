@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ProjectController::class, 'main'])->name('main');
 Route::post('/refresh-data', [ProjectController::class, 'refresh']);
 Route::get('/search', [ProjectController::class, 'search']);
+Route::get('/movie', [MovieController::class, 'index']);
